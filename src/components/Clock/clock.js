@@ -25,9 +25,9 @@ export default class Clock extends Component {
         const { time } = this.state; 
         
         return (
-            <div>
+            <p>
                 { time.toLocaleTimeString() }
-            </div>
+            </p>
         )
     }
 }

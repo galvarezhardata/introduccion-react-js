@@ -1,13 +1,30 @@
 import React from 'react';
 import './App.css';
 
-import Clock from "./components/Clock/clock"
-
+import Header from './components/Header/header'
 
 function App() {
   return (
-    <div className="App">
-      <Clock />
+    <div className="container-fluid">
+      
+      <div className="row">
+        <div class="col">
+          <Header />
+        </div>
+      </div>
+
+      {/* <div className="row">
+        <Slideshow />
+      </div>
+      
+      <div className="row">
+        <Content />
+      </div>
+      
+      <div className="row">
+        <Footer />
+      </div> */}
+
     </div>
   );
 }

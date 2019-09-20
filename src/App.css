@@ -1,3 +1,10 @@
+body {
+  color: #BD93F3;
+  background-color: #3C4556;
+}
+
+/****** React styles ******/
+
 .App {
   text-align: center;
 }
