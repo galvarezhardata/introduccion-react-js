@@ -2,22 +2,23 @@ import React from 'react';
 import './App.css';
 
 import Header from './components/Header/header'
+import Slideshow from './components/Slideshow/slideshow'
 
 function App() {
   return (
     <div className="container-fluid">
       
       <div className="row">
-        <div class="col">
+        <div className="col">
           <Header />
         </div>
       </div>
 
-      {/* <div className="row">
+      <div className="row">
         <Slideshow />
       </div>
       
-      <div className="row">
+      {/* <div className="row">
         <Content />
       </div>
       
