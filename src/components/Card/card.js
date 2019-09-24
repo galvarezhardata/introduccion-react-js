@@ -18,11 +18,11 @@ export default class Card extends Component {
         const { image, text, title } = this.props
 
         return (
-            <div class="col-2">
+            <div className="col-2">
                 <div className="card app-card">
                     <img className="card-img-top" src={image} alt={``} />
                     <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
+                        <h5 className="card-title text-capitalize">{title}</h5>
                         <p className="card-text">{text}</p>
                     </div>
                 </div>
