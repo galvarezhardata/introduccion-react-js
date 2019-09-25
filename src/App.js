@@ -3,28 +3,30 @@ import './App.css';
 
 import Header from './components/Header/header'
 import Slideshow from './components/Slideshow/slideshow'
+import Footer from './components/Footer/footer'
 
 function App() {
   return (
-    <div className="container-fluid">
-      
-      <div className="row">
-        <div className="col">
-          <Header />
+    <div>
+
+      <div className="container-fluid">
+        <div className="row">
+            <Header />
         </div>
       </div>
 
-      <div className="row">
-        <Slideshow />
-      </div>
-      
-      {/* <div className="row">
-        <Content />
-      </div>
-      
-      <div className="row">
-        <Footer />
+      <Slideshow />
+      {/* <div className="container-fluid">
+        <div className="row">
+          <Slideshow />
+        </div>
       </div> */}
+        
+      <div className="container-fluid">
+        <div className="row">
+            <Footer />
+        </div>
+      </div>
 
     </div>
   );

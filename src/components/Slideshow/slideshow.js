@@ -42,32 +42,39 @@ export default class Slideshow extends Component {
         const { pokemon } = this.state
 
         return (
-            <div className="row">
-                <div className="col">
-                    <i 
-                        className="material-icons btn app-prev-btn"
-                        onClick={this.fetchPrevPokemon}>
-                        keyboard_arrow_left
-                    </i>
+            <div class="container-fluid">
+
+                <div className="row mt-3">
+                    <div className="col-12">
+                        <Card 
+                            image={pokemon.sprites.front_default}
+                            title={pokemon.name}
+                            type1={pokemon.types[0].type.name}
+                            type2={pokemon.types.length === 2 ? pokemon.types[1].type.name : null}
+                            text="Lorem ipsum dolor sit amet..."/>
+                    </div>
                 </div>
                 
-                <div className="col">
-                    <Card 
-                        image={pokemon.sprites.front_default}
-                        title={pokemon.name}
-                        type1={pokemon.types[0].type.name}
-                        type2={pokemon.types.length === 2 ? pokemon.types[1].type.name : null}
-                        text="Lorem ipsum dolor sit amet..."/>
+                <div className="row mt-3">
+                    <div className="col-1">
+                        <i 
+                            className="material-icons btn app-btn-prev"
+                            onClick={this.fetchPrevPokemon}>
+                            keyboard_arrow_left
+                        </i>
+                    </div>
+    
+                    <div className="col-1">
+                        <i 
+                            className="material-icons btn app-btn-next"
+                            onClick={this.fetchNextPokemon}>
+                            keyboard_arrow_right
+                        </i>
+                    </div>
                 </div>
-                    
-                <div className="col">
-                    <i 
-                        className="material-icons btn app-next-btn"
-                        onClick={this.fetchNextPokemon}>
-                        keyboard_arrow_right
-                    </i>
-                </div>
+
             </div>
+            
         )
     }
         
