@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.app-btn-container {
+    text-align: center;
+}
+
+.app-prev-btn {
+    border-color: #BD93F3;
+    border-width: 1px;
+}
+
+.app-next-btn {
+    border-color: #BD93F3;
+    border-width: 1px;
+}
