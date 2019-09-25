@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from '../Card/card'
+import '../Slideshow/slideshow.css'
 
 export default class Slideshow extends Component {
 
@@ -8,19 +9,32 @@ export default class Slideshow extends Component {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     constructor() {
+        console.log("Constructor.")
         super()
-        this.state = { 
+        this.state = {
+            actual: 1, 
             pokemon: {}, 
             isLoading: true 
         }
+
+        this.fetchPrevPokemon = this.fetchPrevPokemon.bind(this)
+        this.fetchNextPokemon = this.fetchNextPokemon.bind(this)
     }
     
     componentDidMount() {
-        this.fetchPokemonByNumber(6)
+        console.log("ComponentDidMount.")
+        this.fetchPokemonByNumber(this.state.actual)
     }
     
+    componentDidUpdate(prevProps, prevState) {
+        console.log("ComponentDidUpdate.")
+        if (prevState.actual !== this.state.actual) {
+            this.fetchPokemonByNumber(this.state.actual)
+        }
+    }
+
     render() {
-        
+        console.log("Render.")
         if (this.state.isLoading) {
             return null
         }
@@ -28,27 +42,62 @@ export default class Slideshow extends Component {
         const { pokemon } = this.state
 
         return (
-            <div>
-                <Card 
-                    image={pokemon.sprites.front_default} 
-                    title={`${pokemon.name} (${pokemon.types[0].type.name}/${pokemon.types[1].type.name})`}
-                    text="Lorem ipsum dolor sit amet..." />
+            <div className="row">
+                <div className="col">
+                    <i 
+                        className="material-icons btn app-prev-btn"
+                        onClick={this.fetchPrevPokemon}>
+                        keyboard_arrow_left
+                    </i>
+                </div>
+                
+                <div className="col">
+                    <Card 
+                        image={pokemon.sprites.front_default}
+                        title={pokemon.name}
+                        type1={pokemon.types[0].type.name}
+                        type2={pokemon.types.length === 2 ? pokemon.types[1].type.name : null}
+                        text="Lorem ipsum dolor sit amet..."/>
+                </div>
+                    
+                <div className="col">
+                    <i 
+                        className="material-icons btn app-next-btn"
+                        onClick={this.fetchNextPokemon}>
+                        keyboard_arrow_right
+                    </i>
+                </div>
             </div>
         )
     }
         
-        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        //            Métodos del componente
-        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //            Métodos del componente
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        fetchPokemonByNumber(id) {
-            const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-    
-            fetch(url)
-            .then(res => res.json())
-            .then(pokemon => {
-              this.setState({ pokemon, isLoading: false });
-            });
-        }
-        
+    fetchPokemonByNumber(id) {
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+
+        fetch(url)
+        .then(res => res.json())
+        .then(pokemon => {
+            this.setState({ pokemon, isLoading: false });
+        });
     }
+
+    fetchPrevPokemon() {
+        let { actual } = this.state
+        
+        actual = actual === 1 ? 1 : this.state.actual - 1
+        
+        this.setState({ actual })
+    }
+    
+    fetchNextPokemon() {
+        let { actual } = this.state
+        
+        actual = actual === 151 ? 151 : this.state.actual + 1
+        
+        this.setState({ actual })
+    }
+}
