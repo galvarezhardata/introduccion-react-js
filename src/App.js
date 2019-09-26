@@ -15,7 +15,14 @@ function App() {
         </div>
       </div>
 
-      <Slideshow />
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col">
+            <Slideshow />
+          </div>
+        </div>
+      </div>
+
       {/* <div className="container-fluid">
         <div className="row">
           <Slideshow />

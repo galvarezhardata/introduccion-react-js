@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Card from '../Card/card'
 import '../Slideshow/slideshow.css'
+import Card from '../Card/card'
+import Info from '../Info/info'
 
 export default class Slideshow extends Component {
 
@@ -42,37 +43,60 @@ export default class Slideshow extends Component {
         const { pokemon } = this.state
 
         return (
-            <div class="container-fluid">
-
-                <div className="row mt-3">
-                    <div className="col-12">
-                        <Card 
-                            image={pokemon.sprites.front_default}
-                            title={pokemon.name}
-                            type1={pokemon.types[0].type.name}
-                            type2={pokemon.types.length === 2 ? pokemon.types[1].type.name : null}
-                            text="Lorem ipsum dolor sit amet..."/>
+            <div>
+                <div className="app-cborder mt-1">
+                    
+                    <div className="app-cname">
+                        SLIDESHOW
                     </div>
-                </div>
-                
-                <div className="row mt-3">
-                    <div className="col-1">
-                        <i 
-                            className="material-icons btn app-btn-prev"
-                            onClick={this.fetchPrevPokemon}>
-                            keyboard_arrow_left
-                        </i>
-                    </div>
+                    
     
-                    <div className="col-1">
-                        <i 
-                            className="material-icons btn app-btn-next"
-                            onClick={this.fetchNextPokemon}>
-                            keyboard_arrow_right
-                        </i>
+                    {/* ------------------------- Card ------------------------- */}
+                    
+                    <div className="row mt-1 ml-1">
+                        <div className="col">
+                            <Card 
+                                image={pokemon.sprites.front_default}
+                                title={pokemon.name}
+                                type1={pokemon.types[0].type.name}
+                                type2={pokemon.types.length === 2 ? pokemon.types[1].type.name : null}
+                                text="Lorem ipsum dolor sit amet..."/>
+                        </div>
+
+                        <div class="ml-1 mb-1 mr-1 col-9">
+                            <Info
+                                imageDefMale={pokemon.sprites.front_default}
+                                imageShiMale={pokemon.sprites.front_shiny}
+                                imageDefFemale={pokemon.sprites.front_female}
+                                imageShiFemale={pokemon.sprites.front_shiny_female}
+                                title={pokemon.name}
+                                type1={pokemon.types[0].type.name}
+                                type2={pokemon.types.length === 2 ? pokemon.types[1].type.name : null}
+                                subtitle="Lorem ipsum dolor sit amet..."
+                                text="Consectetur adipiscing elit. Etiam a nibh eu enim ornare egestas sit amet id orci. Cras varius mauris vitae dolor sollicitudin gravida. In ut faucibus massa. Mauris mattis tempor nulla posuere eleifend. Duis rhoncus rutrum nibh, at vulputate sapien tincidunt sit amet. Nulla quis purus eros. Proin convallis vestibulum risus. Integer lobortis, lacus eget suscipit congue, magna diam elementum nulla, et congue mauris tortor vel tortor."/>
+                        </div>                        
+                    </div>
+                    
+                    {/* ------------------------- Botonera ------------------------- */}
+                    
+                    <div className="row mt-1 mb-1 ml-1">
+                        <div className="col-1">
+                            <i 
+                                className="material-icons btn app-btn-prev"
+                                onClick={this.fetchPrevPokemon}>
+                                keyboard_arrow_left
+                            </i>
+                        </div>
+        
+                        <div className="col-1">
+                            <i 
+                                className="material-icons btn app-btn-next"
+                                onClick={this.fetchNextPokemon}>
+                                keyboard_arrow_right
+                            </i>
+                        </div>
                     </div>
                 </div>
-
             </div>
             
         )

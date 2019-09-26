@@ -6,6 +6,21 @@ body {
   background-color: #3C4556;
 }
 
+.app-cname {
+  width: 100%;
+  background-color: #BD93F3;
+  color: #3C4556;
+  font-size: 0.6rem;
+  font-weight: bold;
+  padding-left: 0.3rem;
+}
+
+.app-cborder {
+  border-color: #BD93F3;
+  border-width: 1px;
+  border-style: solid;
+}
+
 /****** React styles ******/
 
 .App {

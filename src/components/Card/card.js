@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import '../Card/card.css'
 
 export default class Card extends Component {
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //            PropTypes
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
     static propTypes = {
         image: PropTypes.string.isRequired,
         text:  PropTypes.string.isRequired,
@@ -15,24 +20,37 @@ export default class Card extends Component {
         type2: ''        
     }
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //            Métodos del ciclo de vida
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     constructor() {
         super()
         this.state = {}
     }
 
     render() {
-        const { image, text, title, type1, type2 } = this.props
+        const { 
+            image,
+            text,
+            title,
+            type1,
+            type2
+        } = this.props
 
         return (
             <div className="card app-card">
+                <div className="app-cname">
+                    CARD
+                </div>
                 <img className="card-img-top" src={image} alt={``} />
                 <div className="card-body">
-                    <h5 className="card-title text-capitalize">
+                    <h4 className="card-title text-capitalize">
                         {title}
-                    </h5>
-                    <p className="card-text text-capitalize">
+                    </h4>
+                    <h6 className="card-text text-capitalize">
                         {type1} {type2 !== null ? '/' : ''} {type2}
-                    </p>
+                    </h6>
                     <p className="card-text">{text}</p>
                 </div>
             </div>
