@@ -1,40 +1,26 @@
 import React from 'react';
+import { Switch, Route } from "react-router-dom"
 import './App.css';
 
 import Header from './components/Header/header'
-import Slideshow from './components/Slideshow/slideshow'
 import Footer from './components/Footer/footer'
+import Slideshow from './components/Slideshow/slideshow'
+import NotFound from './components/NotFound/notFound'
+import Pagina from './components/Pagina/pagina'
 
 function App() {
   return (
     <div>
-
-      <div className="container-fluid">
-        <div className="row">
-            <Header />
-        </div>
-      </div>
-
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col">
-            <Slideshow />
-          </div>
-        </div>
-      </div>
-
-      {/* <div className="container-fluid">
-        <div className="row">
-          <Slideshow />
-        </div>
-      </div> */}
-        
-      <div className="container-fluid">
-        <div className="row">
-            <Footer />
-        </div>
-      </div>
-
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Slideshow} />
+        <Route exact path="/home" component={Slideshow} />
+        <Route exact path="/pagina1" component={() => <Pagina image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png" title="Raticate" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget turpis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus." />} />
+        <Route exact path="/pagina2" component={() => <Pagina image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png" title="Nidoqueen" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget turpis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus." />} />
+        <Route exact path="/pagina3" component={() => <Pagina image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png" title="Growlithe" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget turpis turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus." />} />
+        <Route component={NotFound} />
+      </Switch>
+      <Footer />
     </div>
   );
 }
